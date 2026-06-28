@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxidación y Reducción — Guía Magistral 12vo</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+  :root {
+    --azul:      #185FA5;
+    --azul-med:  #2E75B6;
+    --azul-claro:#D6E4F7;
+    --azul-pale: #EBF3FB;
+    --verde-bg:  #EAF3DE;
+    --verde-bd:  #97C459;
+    --verde-dk:  #1D6038;
+    --ambar:     #B45309;
+    --ambar-bg:  #FEF3C7;
+    --rojo:      #C0392B;
+    --rojo-bg:   #FDECEA;
+    --lila-bg:   #F3F0FA;
+    --lila-bd:   #9575CD;
+    --lila-dk:   #5B21B6;
+    --navy:      #042C53;
+    --gris:      #6B7280;
+    --gris-bg:   #F3F4F6;
+    --gold:      #F59E0B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 15px; color: #1A1A1A; background: #F8FAFC; line-height: 1.6; }
+
+  /* ── NAV ── */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--navy); display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
+  nav a { color: #CBD5E1; text-decoration: none; font-size: 12px; padding: 4px 10px; border-radius: 4px; transition: background .2s; white-space: nowrap; }
+  nav a:hover { background: var(--azul); color: #fff; }
+  .nav-title { color: var(--gold); font-weight: bold; font-size: 13px; align-self: center; margin-right: 8px; }
+
+  /* ── LAYOUT ── */
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 72px; }
+
+  /* ── PORTADA ── */
+  .cover { background: linear-gradient(135deg, var(--navy) 0%, var(--azul) 100%); color: #fff; border-radius: 14px; padding: 42px 36px; margin-bottom: 32px; text-align: center; }
+  .cover h1 { font-size: 2.3rem; letter-spacing: -.5px; margin-bottom: 6px; }
+  .cover .sub { font-size: 1rem; opacity: .8; margin-bottom: 22px; }
+  .cover .badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .cover .badge { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 5px 16px; font-size: 13px; }
+  .focus-strip { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+  .focus-pill { background: var(--gold); color: var(--navy); font-weight: bold; font-size: 12px; border-radius: 14px; padding: 4px 14px; }
+
+  /* ── LEE ESTO PRIMERO ── */
+  .lee-box { background: var(--verde-bg); border: 2px solid var(--verde-bd); border-left: 6px solid var(--verde-dk); border-radius: 8px; padding: 20px 24px; margin-bottom: 28px; }
+  .lee-box h3 { color: var(--verde-dk); margin-bottom: 12px; font-size: 1rem; }
+  .lee-box p { margin-bottom: 8px; }
+  .lee-box strong { color: var(--verde-dk); }
+
+  /* ── SECTION HEADERS ── */
+  .sec-header { background: var(--azul); color: #fff; border-radius: 8px 8px 0 0; padding: 12px 20px; display: flex; align-items: center; gap: 10px; margin-top: 36px; }
+  .sec-header .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; flex-shrink: 0; }
+  .sec-header h2 { font-size: 1.1rem; }
+  .card { background: #fff; border: 1px solid #D1D5DB; border-top: none; border-radius: 0 0 8px 8px; padding: 22px 26px; margin-bottom: 8px; }
+
+  /* ── CALLOUT BLOCKS ── */
+  .formula-block { background: var(--verde-bg); border: 1.5px solid var(--verde-bd); border-left: 5px solid var(--verde-dk); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+  .formula-block h4 { color: var(--verde-dk); margin-bottom: 10px; font-size: .95rem; }
+
+  .rule-block { border: 1.5px solid var(--azul-med); border-left: 6px solid var(--azul); border-radius: 6px; padding: 16px 20px; margin: 14px 0; background: var(--azul-pale); }
+  .rule-block h4 { color: var(--azul); margin-bottom: 8px; font-size: .95rem; }
+  .rule-block ul { margin: 8px 0 0 20px; }
+  .rule-block li { margin-bottom: 5px; }
+
+  .analogy-box { background: var(--ambar-bg); border-left: 5px solid var(--ambar); border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+  .analogy-box h4 { color: var(--ambar); margin-bottom: 8px; font-size: .9rem; }
+
+  .warn-box { background: var(--rojo-bg); border: 1.5px solid var(--rojo); border-left: 5px solid var(--rojo); border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+  .warn-box h4 { color: var(--rojo); margin-bottom: 8px; }
+  .warn-box ul { margin-left: 18px; }
+  .warn-box li { color: #7B2020; margin-bottom: 5px; }
+
+  .lila-box { background: var(--lila-bg); border: 1.5px solid var(--lila-bd); border-left: 5px solid var(--lila-dk); border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+  .lila-box h4 { color: var(--lila-dk); margin-bottom: 10px; }
+
+  /* ── EXAMPLE BLOCK ── */
+  .example-block { border: 1px solid var(--azul-claro); border-left: 5px solid var(--azul); border-radius: 0 6px 6px 0; background: #fff; padding: 16px 20px; margin: 16px 0; }
+  .example-block h4 { color: var(--azul); margin-bottom: 12px; font-size: .95rem; }
+  .step { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .step-circle { min-width: 27px; height: 27px; border-radius: 50%; background: var(--azul); color: #fff; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-content { flex: 1; }
+  .result-box { background: var(--verde-bg); border: 2px solid var(--verde-bd); border-radius: 6px; padding: 10px 16px; text-align: center; font-size: 1.05rem; margin-top: 10px; }
+  .red-result-box { background: var(--rojo-bg); border: 2px solid var(--rojo); border-radius: 6px; padding: 10px 16px; text-align: center; font-size: 1.05rem; margin-top: 10px; }
+
+  /* ── COLORS ── */
+  .ox  { color: var(--rojo);     font-weight: bold; }
+  .red { color: var(--verde-dk); font-weight: bold; }
+  .em  { color: var(--azul);     font-weight: bold; }
+  .gold-text { color: var(--gold); font-weight: bold; }
+
+  /* ── TABLES ── */
+  table.base { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  table.base th { background: var(--navy); color: #fff; padding: 10px 14px; text-align: left; }
+  table.base td { padding: 9px 14px; border-bottom: 1px solid #E5E7EB; vertical-align: top; }
+  table.base tr:nth-child(even) td { background: var(--azul-pale); }
+
+  table.pot { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 12px 0; }
+  table.pot th { background: var(--navy); color: #fff; padding: 9px 12px; text-align: center; }
+  table.pot td { padding: 8px 12px; border-bottom: 1px solid #E5E7EB; text-align: center; }
+  table.pot tr:nth-child(even) td { background: var(--azul-pale); }
+  table.pot .pos { color: var(--verde-dk); font-weight: bold; }
+  table.pot .neg { color: var(--rojo); font-weight: bold; }
+  table.pot .ox-col { color: var(--rojo); }
+  table.pot .red-col { color: var(--verde-dk); }
+
+  table.comp { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  table.comp th { background: var(--navy); color: #fff; padding: 10px 14px; text-align: center; }
+  table.comp td { padding: 9px 14px; border-bottom: 1px solid #E5E7EB; text-align: center; }
+  table.comp tr:nth-child(even) td { background: var(--azul-pale); }
+
+  /* ── CELL DIAGRAM ── */
+  .cell-wrap { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; margin: 16px 0; }
+  .cell-diagram { background: #FAFAFA; border: 2px solid var(--azul); border-radius: 10px; padding: 20px 16px; flex: 1; min-width: 280px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.9; }
+  .cell-diagram .anode  { color: var(--rojo); font-weight: bold; }
+  .cell-diagram .cathode{ color: var(--verde-dk); font-weight: bold; }
+  .cell-diagram .bridge { color: var(--lila-dk); font-weight: bold; }
+  .cell-notes { flex: 1; min-width: 220px; }
+
+  /* ── NOTATION PILL ── */
+  .notation-pill { background: var(--navy); color: #E2E8F0; font-family: 'Courier New', monospace; font-size: 15px; border-radius: 8px; padding: 12px 20px; text-align: center; margin: 14px 0; letter-spacing: .5px; }
+  .notation-pill .an  { color: #FC8181; }
+  .notation-pill .br  { color: #A78BFA; }
+  .notation-pill .cat { color: #6EE7B7; }
+
+  /* ── BATTERY TABLE ── */
+  .bat-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 12px 0; }
+  .bat-table th { background: var(--navy); color: #fff; padding: 9px 12px; text-align: center; }
+  .bat-table td { padding: 9px 12px; border-bottom: 1px solid #E5E7EB; vertical-align: top; }
+  .bat-table tr:nth-child(even) td { background: var(--lila-bg); }
+  .bat-table .label { font-weight: bold; color: var(--azul); }
+
+  /* ── DECISION TABLE ── */
+  .dec-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  .dec-table th { background: var(--navy); color: #fff; padding: 10px 14px; text-align: left; }
+  .dec-table td { padding: 9px 14px; border-bottom: 1px solid #E5E7EB; }
+  .dec-table tr:nth-child(even) td { background: var(--azul-pale); }
+  .dec-table a { color: var(--azul); }
+
+  /* ── CHEATSHEET ── */
+  .cheatsheet { background: var(--navy); color: #CBD5E1; border-radius: 14px; padding: 30px; margin-top: 40px; }
+  .cheatsheet h2 { color: var(--gold); text-align: center; margin-bottom: 22px; font-size: 1.2rem; }
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cs-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 8px; padding: 14px 16px; }
+  .cs-card h4 { color: #60A5FA; margin-bottom: 10px; font-size: .9rem; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 6px; }
+  .cs-card li { margin-left: 16px; margin-bottom: 5px; font-size: 13px; line-height: 1.55; }
+  .cs-ok  { color: #6EE7B7; font-weight: bold; }
+  .cs-warn{ color: #FCA5A5; }
+  .cs-hl  { color: #FCD34D; font-weight: bold; }
+  .fline  { background: rgba(255,255,255,.1); border-radius: 4px; padding: 4px 10px; margin: 4px 0; font-size: 13px; font-family: 'Courier New', monospace; }
+
+  /* ── PRIORITY BADGE ── */
+  .badge-ess { display: inline-block; background: var(--verde-dk); color: #fff; font-size: 11px; font-weight: bold; border-radius: 4px; padding: 2px 8px; margin-left: 6px; vertical-align: middle; }
+  .badge-add { display: inline-block; background: var(--lila-bd); color: #fff; font-size: 11px; font-weight: bold; border-radius: 4px; padding: 2px 8px; margin-left: 6px; vertical-align: middle; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .cs-grid { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 1.5rem; }
+    .cell-wrap { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">⚗️ Redox II</span>
+  <a href="#mapa">Mapa</a>
+  <a href="#sec-nomenclatura">Nomenclatura</a>
+  <a href="#sec-tabla153">Tabla 15.3</a>
+  <a href="#sec-celda">Celda Voltaica</a>
+  <a href="#sec-ejemplos">Ejemplos Completos</a>
+  <a href="#sec-baterias">Baterías</a>
+  <a href="#sec-redox">Balanceo Redox</a>
+  <a href="#comparativa">Comparativa</a>
+  <a href="#cheatsheet">Cheatsheet</a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════
+     PORTADA
+══════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div style="font-size:3rem;margin-bottom:10px">⚗️</div>
+  <h1>Oxidación y Reducción</h1>
+  <p class="sub">Capítulo 15 — Guía Magistral v2 · Plan 2 días</p>
+  <div class="badges">
+    <span class="badge">📚 Química 12vo</span>
+    <span class="badge">📅 Junio 2026</span>
+    <span class="badge">⏱ 2 días</span>
+    <span class="badge">🎯 Enfoque Examen</span>
+  </div>
+  <div class="focus-strip">
+    <span class="focus-pill">① Nomenclatura en inglés</span>
+    <span class="focus-pill">② Tabla 15.3 (E° reducción)</span>
+    <span class="focus-pill">③ Celda Voltaica completa</span>
+    <span class="focus-pill">④ Baterías</span>
+    <span class="focus-pill">⑤ Balanceo Redox</span>
+  </div>
+</div>
+
+<!-- LEE ESTO PRIMERO -->
+<div class="lee-box">
+  <h3>📌 LEE ESTO PRIMERO</h3>
+  <p><strong>Cubre exactamente:</strong> Nomenclatura de compuestos en inglés → fórmula → reacción. Uso de la Tabla 15.3 para identificar quién se reduce, quién se oxida y el voltaje de celda. Tres componentes obligatorios de una celda voltaica: notación abreviada, ecuación global balanceada, y diagrama. Tipos de baterías con sus semirreacciones. Balanceo por semirreacciones (medio ácido/básico) como habilidad de respaldo.</p>
+  <p><strong>Más probable en examen:</strong> (1) Usar Tabla 15.3 para determinar espontaneidad y calcular E°celda. (2) Escribir las tres representaciones de una celda voltaica completa —notación | ecuación | diagrama—. (3) Identificar ánodo/cátodo en baterías con sus reacciones. (4) Traducir nombre en inglés → fórmula → plantear reacción.</p>
+  <p><strong>Por qué importa:</strong> Sin la Tabla 15.3 no sabes quién se oxida ni el voltaje. Sin el diagrama, la pregunta queda incompleta. La nomenclatura en inglés es la puerta de entrada a todos los problemas.</p>
+</div>
+
+<!-- TABLA MAESTRA DE DECISIÓN -->
+<section id="mapa">
+  <div class="sec-header"><div class="num">🗺</div><h2>TABLA MAESTRA DE DECISIÓN</h2></div>
+  <div class="card">
+    <table class="dec-table">
+      <thead><tr><th>Si el examen pide…</th><th>Herramienta</th><th>Ir a</th></tr></thead>
+      <tbody>
+        <tr><td>Escribir fórmula desde nombre en inglés</td><td>Reglas de nomenclatura + tabla de iones</td><td><a href="#sec-nomenclatura">Sec. 1</a></td></tr>
+        <tr><td>Saber quién se reduce / quién se oxida</td><td>Tabla 15.3 — mayor E° = se reduce</td><td><a href="#sec-tabla153">Sec. 2</a></td></tr>
+        <tr><td>Calcular voltaje de celda</td><td>E°celda = E°cátodo − E°ánodo</td><td><a href="#sec-tabla153">Sec. 2</a></td></tr>
+        <tr><td>Notación abreviada de celda</td><td>Ánodo | sol. ║ sol. | Cátodo</td><td><a href="#sec-celda">Sec. 3</a></td></tr>
+        <tr><td>Diagrama de celda voltaica</td><td>Págs. 536, 542, 543 del libro</td><td><a href="#sec-celda">Sec. 3</a></td></tr>
+        <tr><td>Semirreacciones en baterías</td><td>Tabla de baterías — ánodo=Ox, cátodo=Red</td><td><a href="#sec-baterias">Sec. 4</a></td></tr>
+        <tr><td>Balancear ecuación redox compleja</td><td>Algoritmo 5 pasos semirreacciones</td><td><a href="#sec-redox">Sec. 5</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1 — NOMENCLATURA EN INGLÉS
+══════════════════════════════════════════════════════════ -->
+<section id="sec-nomenclatura">
+  <div class="sec-header">
+    <div class="num">1</div>
+    <h2>NOMENCLATURA EN INGLÉS → FÓRMULA <span class="badge-ess">ESENCIAL</span></h2>
+  </div>
+  <div class="card">
+
+    <div class="formula-block">
+      <h4>¿Por qué importa esto?</h4>
+      <p>Tu profesor plantea los problemas con nombres en inglés (p. ej. <em>"potassium permanganate reacts with..."</em>). Tú debes escribir la fórmula correcta y luego plantear la reacción. Si fallas aquí, el resto del problema colapsa.</p>
+    </div>
+
+    <div class="rule-block">
+      <h4>⚛️ Regla de traducción rápida</h4>
+      <ul>
+        <li>Nombre del <strong>catión</strong> primero → luego <strong>anión</strong>.</li>
+        <li>Sufijo <strong>-ide</strong> → ion simple (chloride = Cl⁻, oxide = O²⁻, sulfide = S²⁻).</li>
+        <li>Sufijo <strong>-ate</strong> → oxoanión con más oxígenos (sulfate = SO₄²⁻, nitrate = NO₃⁻, phosphate = PO₄³⁻).</li>
+        <li>Sufijo <strong>-ite</strong> → oxoanión con menos oxígenos (sulfite = SO₃²⁻, nitrite = NO₂⁻).</li>
+        <li>Prefijos <strong>per-...-ate</strong> (más O) y <strong>hypo-...-ite</strong> (menos O).</li>
+        <li>Números romanos en inglés = estado de oxidación: iron(III) = Fe³⁺.</li>
+      </ul>
+    </div>
+
+    <h4 style="margin: 18px 0 10px; color: var(--azul)">📋 Tabla de Compuestos Frecuentes en Examen</h4>
+    <table class="base">
+      <thead>
+        <tr>
+          <th>Nombre en inglés</th>
+          <th>Fórmula</th>
+          <th>Ión / Estado ox.</th>
+          <th>Aparece como…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Potassium permanganate</td><td><strong>KMnO₄</strong></td><td>Mn = +7</td><td>Agente oxidante fuerte (se reduce)</td></tr>
+        <tr><td>Potassium dichromate</td><td><strong>K₂Cr₂O₇</strong></td><td>Cr = +6</td><td>Agente oxidante fuerte (se reduce)</td></tr>
+        <tr><td>Hydrogen peroxide</td><td><strong>H₂O₂</strong></td><td>O = −1 ⚠️</td><td>Oxidante o reductor (depende del contexto)</td></tr>
+        <tr><td>Sulfuric acid</td><td><strong>H₂SO₄</strong></td><td>S = +6</td><td>Medio ácido, proporciona H⁺</td></tr>
+        <tr><td>Nitric acid</td><td><strong>HNO₃</strong></td><td>N = +5</td><td>Agente oxidante (N se reduce a NO)</td></tr>
+        <tr><td>Iron(II) sulfate</td><td><strong>FeSO₄</strong></td><td>Fe = +2</td><td>Agente reductor (Fe se oxida a +3)</td></tr>
+        <tr><td>Iron(III) chloride</td><td><strong>FeCl₃</strong></td><td>Fe = +3</td><td>Agente oxidante</td></tr>
+        <tr><td>Copper(II) sulfate</td><td><strong>CuSO₄</strong></td><td>Cu = +2</td><td>Cátodo en celda Cu/Zn</td></tr>
+        <tr><td>Zinc sulfate</td><td><strong>ZnSO₄</strong></td><td>Zn = 0→+2</td><td>Ánodo en celda Cu/Zn</td></tr>
+        <tr><td>Silver nitrate</td><td><strong>AgNO₃</strong></td><td>Ag = +1</td><td>Cátodo en celdas de plata</td></tr>
+        <tr><td>Lead(IV) oxide</td><td><strong>PbO₂</strong></td><td>Pb = +4</td><td>Cátodo en batería de plomo</td></tr>
+        <tr><td>Sodium hydroxide</td><td><strong>NaOH</strong></td><td>Na = +1</td><td>Electrolito batería alcalina</td></tr>
+        <tr><td>Manganese dioxide</td><td><strong>MnO₂</strong></td><td>Mn = +4</td><td>Cátodo en pila seca</td></tr>
+        <tr><td>Nickel(III) oxyhydroxide</td><td><strong>NiO(OH)</strong></td><td>Ni = +3</td><td>Cátodo batería NiCad</td></tr>
+        <tr><td>Carbon dioxide</td><td><strong>CO₂</strong></td><td>C = +4</td><td>Producto de combustión — NO energía limpia</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box" style="margin-top:16px">
+      <h4>⛔ CORRECCIÓN CONCEPTUAL IMPORTANTE</h4>
+      <ul>
+        <li><strong>Energía limpia</strong> = NO libera contaminantes ni gases de efecto invernadero. Por definición, <strong>no produce CO₂</strong>. Si en tus notas anteriores dice que produce CO₂ — es un error. Las energías limpias (solar, eólica, hidrógeno verde) buscan <em>eliminar o neutralizar</em> las emisiones de CO₂.</li>
+      </ul>
+    </div>
+
+    <div class="example-block">
+      <h4>✏️ Práctica de Traducción — Del Enunciado a la Fórmula</h4>
+      <div class="step"><div class="step-circle">1</div><div class="step-content">
+        <strong>"potassium permanganate"</strong> → K⁺ (grupo 1A, siempre +1) + MnO₄⁻ (permanganate) → <em class="em">KMnO₄</em>. Mn = +7.
+      </div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-content">
+        <strong>"iron(III) sulfate"</strong> → Fe³⁺ + SO₄²⁻. Para balancear cargas: 2 Fe³⁺ + 3 SO₄²⁻ → <em class="em">Fe₂(SO₄)₃</em>.
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        <strong>"hydrogen peroxide"</strong> → H₂O₂. ⚠️ O aquí es −1, <strong>NO −2</strong>. Error más frecuente del capítulo.
+      </div></div>
+      <div class="step"><div class="step-circle">4</div><div class="step-content">
+        <strong>"potassium dichromate"</strong> → K₂Cr₂O₇. 2K⁺(+2) + Cr₂O₇²⁻. Cr: 2x + 7(−2) = −2 → x = <em class="em">+6</em>.
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 2 — TABLA 15.3 / POTENCIALES DE REDUCCIÓN
+══════════════════════════════════════════════════════════ -->
+<section id="sec-tabla153">
+  <div class="sec-header">
+    <div class="num">2</div>
+    <h2>TABLA 15.3 — POTENCIALES ESTÁNDAR DE REDUCCIÓN <span class="badge-ess">ESENCIAL</span></h2>
+  </div>
+  <div class="card">
+
+    <div class="formula-block">
+      <h4>¿Qué es la Tabla 15.3?</h4>
+      <p>Cada fila muestra una <strong>semirreacción de reducción</strong> con su potencial estándar E° (en voltios). Un E° más <strong>positivo</strong> = tendencia mayor a <strong>ganar electrones</strong> (reducirse espontáneamente). La tabla te dice quién gana y quién pierde en cualquier par de especies.</p>
+    </div>
+
+    <div class="analogy-box">
+      <h4>💡 Analogía — El "ranking" de los elementos</h4>
+      <p>Imagina que todos los iones están en una fila y el que tiene el número más alto (E°) tiene el "poder" de atraer electrones. En un combate entre dos iones, el que tiene mayor E° <strong>siempre gana y se reduce</strong>; el otro pierde y se oxida.</p>
+    </div>
+
+    <div class="rule-block">
+      <h4>⚛️ Las 3 reglas de la Tabla 15.3</h4>
+      <ul>
+        <li><strong>Regla 1:</strong> La especie con <strong>mayor E°</strong> actúa como <span class="red">agente oxidante</span> → se <strong>REDUCE</strong> → va al <strong>CÁTODO</strong>.</li>
+        <li><strong>Regla 2:</strong> La especie con <strong>menor E°</strong> actúa como <span class="ox">agente reductor</span> → se <strong>OXIDA</strong> → va al <strong>ÁNODO</strong>.</li>
+        <li><strong>Regla 3:</strong> <span style="background:var(--ambar-bg); padding:2px 6px; border-radius:4px; font-weight:bold">E°celda = E°cátodo − E°ánodo</span>. Si E°celda > 0 → reacción <span class="red">ESPONTÁNEA</span>.</li>
+      </ul>
+    </div>
+
+    <h4 style="margin: 18px 0 10px; color: var(--azul)">📊 Tabla 15.3 — Semirreacciones Clave (extracto examinable)</h4>
+    <table class="pot">
+      <thead>
+        <tr>
+          <th style="width:55%">Semirreacción de Reducción</th>
+          <th>E° (V)</th>
+          <th>Tendencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="red-col">F₂(g) + 2e⁻ → 2F⁻(aq)</td><td class="pos">+2.87</td><td>Reduce muy fácil ↑</td></tr>
+        <tr><td class="red-col">MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O</td><td class="pos">+1.51</td><td>Oxidante muy fuerte</td></tr>
+        <tr><td class="red-col">Cl₂(g) + 2e⁻ → 2Cl⁻(aq)</td><td class="pos">+1.36</td><td>Oxidante fuerte</td></tr>
+        <tr><td class="red-col">Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O</td><td class="pos">+1.33</td><td>Oxidante fuerte</td></tr>
+        <tr><td class="red-col">O₂(g) + 4H⁺ + 4e⁻ → 2H₂O</td><td class="pos">+1.23</td><td>Importante en corrosión</td></tr>
+        <tr><td class="red-col">Ag⁺(aq) + e⁻ → Ag(s)</td><td class="pos">+0.80</td><td>Cátodo común en exámenes</td></tr>
+        <tr><td class="red-col">Fe³⁺(aq) + e⁻ → Fe²⁺(aq)</td><td class="pos">+0.77</td><td>Par Fe común</td></tr>
+        <tr><td class="red-col">Cu²⁺(aq) + 2e⁻ → Cu(s)</td><td class="pos">+0.34</td><td>Cátodo celda Zn/Cu</td></tr>
+        <tr><td>2H⁺(aq) + 2e⁻ → H₂(g)</td><td style="font-weight:bold">0.00</td><td>Referencia estándar</td></tr>
+        <tr><td class="ox-col">Pb²⁺(aq) + 2e⁻ → Pb(s)</td><td class="neg">−0.13</td><td>Reductor moderado</td></tr>
+        <tr><td class="ox-col">Ni²⁺(aq) + 2e⁻ → Ni(s)</td><td class="neg">−0.25</td><td>Reductor moderado</td></tr>
+        <tr><td class="ox-col">Fe²⁺(aq) + 2e⁻ → Fe(s)</td><td class="neg">−0.44</td><td>Reductor</td></tr>
+        <tr><td class="ox-col">Zn²⁺(aq) + 2e⁻ → Zn(s)</td><td class="neg">−0.76</td><td>Ánodo celda Zn/Cu</td></tr>
+        <tr><td class="ox-col">Al³⁺(aq) + 3e⁻ → Al(s)</td><td class="neg">−1.66</td><td>Reductor fuerte</td></tr>
+        <tr><td class="ox-col">Mg²⁺(aq) + 2e⁻ → Mg(s)</td><td class="neg">−2.37</td><td>Reductor fuerte (ánodo sacrificial)</td></tr>
+        <tr><td class="ox-col">Na⁺(aq) + e⁻ → Na(s)</td><td class="neg">−2.71</td><td>Reduce muy difícil ↓</td></tr>
+        <tr><td class="ox-col">Li⁺(aq) + e⁻ → Li(s)</td><td class="neg">−3.05</td><td>Más reductor de todos</td></tr>
+      </tbody>
+    </table>
+
+    <div class="example-block">
+      <h4>✏️ Cómo usar la Tabla 15.3 — Ejemplo Completo</h4>
+      <p style="margin-bottom:10px"><strong>Problema:</strong> ¿Es espontánea la celda Zn / Cu? ¿Cuál es E°celda?</p>
+      <div class="step"><div class="step-circle">1</div><div class="step-content">
+        Busca en la tabla: <strong>Cu²⁺/Cu</strong> → E° = <span class="red">+0.34 V</span> &nbsp;|&nbsp; <strong>Zn²⁺/Zn</strong> → E° = <span class="ox">−0.76 V</span>
+      </div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-content">
+        Mayor E° = Cu²⁺ → actúa de <span class="red">CÁTODO</span> (se reduce). Menor E° = Zn → actúa de <span class="ox">ÁNODO</span> (se oxida).
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        E°celda = E°cátodo − E°ánodo = <strong>0.34 − (−0.76) = +1.10 V</strong>
+      </div></div>
+      <div class="result-box">E°celda = <strong>+1.10 V → ESPONTÁNEA ✓</strong> (positivo = espontánea)</div>
+    </div>
+
+    <div class="warn-box">
+      <h4>⛔ Errores Frecuentes con la Tabla 15.3</h4>
+      <ul>
+        <li><strong>No invertir E°ánodo en la fórmula.</strong> Usas E°celda = E°cátodo <em>menos</em> E°ánodo, no la suma.</li>
+        <li><strong>Multiplicar el E° por el coeficiente.</strong> El E° es intensivo — NO se multiplica cuando igualas los e⁻.</li>
+        <li><strong>Confundir signo al invertir la semirreacción.</strong> Si una semirreacción se invierte (porque el elemento se oxida), la semirreacción cambia dirección, pero el E° que usas en la fórmula sigue siendo el de la tabla (no lo inviertes al aplicar la fórmula).</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 3 — CELDA VOLTAICA
+══════════════════════════════════════════════════════════ -->
+<section id="sec-celda">
+  <div class="sec-header">
+    <div class="num">3</div>
+    <h2>CELDA VOLTAICA — Las 3 Representaciones Obligatorias <span class="badge-ess">ESENCIAL</span></h2>
+  </div>
+  <div class="card">
+
+    <div class="formula-block">
+      <h4>Concepto en 2 líneas</h4>
+      <p>Una celda voltaica convierte <strong>energía química</strong> de una reacción redox espontánea en <strong>energía eléctrica</strong>. Los electrones fluyen solos por el alambre, desde el ánodo hasta el cátodo.</p>
+    </div>
+
+    <div class="analogy-box">
+      <h4>💡 Analogía — Agua cuesta abajo</h4>
+      <p>Los e⁻ fluyen espontáneamente del ánodo (potencial más negativo) al cátodo (potencial más positivo), igual que el agua fluye sola de arriba hacia abajo. La batería es la colina; el alambre, el río.</p>
+    </div>
+
+    <!-- ── REPRESENTACIÓN 1: DIAGRAMA ── -->
+    <h3 style="margin: 22px 0 12px; color: var(--azul)">① DIAGRAMA DE LA CELDA (págs. 536, 542, 543)</h3>
+
+    <p style="margin-bottom: 14px; color: var(--gris)">El profesor enfatizó que el diagrama de las páginas 536, 542 y 543 de tu libro es el modelo correcto. Reprodúcelo así:</p>
+
+    <div class="cell-wrap">
+      <div class="cell-diagram">
+<pre style="font-family:'Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; background:none; border:none; padding:0; overflow:auto">
+         CIRCUITO EXTERNO (alambre)
+  e⁻ ──────────────────────────────────► e⁻
+  │                                       │
+  │                                       │
+┌─────────────┐   ┌──────────┐   ┌─────────────┐
+│             │   │  PUENTE  │   │             │
+│   ÁNODO     │   │  SALINO  │   │   CÁTODO    │
+│  Zn (s)     │   │ (NaNO₃)  │   │  Cu (s)     │
+│             │   │          │   │             │
+│ Zn→Zn²⁺+2e⁻│   │ Na⁺ →    │   │Cu²⁺+2e⁻→Cu │
+│  (OXIDACIÓN)│   │ ← SO₄²⁻ │   │ (REDUCCIÓN) │
+│             │   │          │   │             │
+│  ZnSO₄(aq)  │   └──────────┘   │  CuSO₄(aq)  │
+└─────────────┘                  └─────────────┘
+     [−]                               [+]
+</pre>
+      </div>
+      <div class="cell-notes">
+        <div class="rule-block" style="margin-top:0">
+          <h4>Regla mnemónica: AN-OX / RED-CAT</h4>
+          <ul>
+            <li><span class="ox">ÁNodo = OXidación</span> (pierde e⁻)</li>
+            <li><span class="red">CÁTodo = REDucción</span> (gana e⁻)</li>
+            <li>e⁻ fluyen: <em>ánodo → alambre → cátodo</em></li>
+            <li>Ánodo = polo <strong>negativo</strong> [−]</li>
+            <li>Cátodo = polo <strong>positivo</strong> [+]</li>
+          </ul>
+        </div>
+        <div class="formula-block" style="margin-top:10px">
+          <h4>Función del Puente Salino</h4>
+          <p>Mantiene la <strong>neutralidad eléctrica</strong> en cada semicelda. Sin él, la acumulación de cargas detiene la reacción. Los iones (Na⁺ hacia cátodo; SO₄²⁻ hacia ánodo) compensan la carga.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REPRESENTACIÓN 2: NOTACIÓN ABREVIADA ── -->
+    <h3 style="margin: 24px 0 12px; color: var(--azul)">② NOTACIÓN ABREVIADA (Shorthand)</h3>
+
+    <div class="rule-block">
+      <h4>⚛️ Formato estándar</h4>
+      <ul>
+        <li><code>Ánodo(s) | sol. ánodo(aq) ║ sol. cátodo(aq) | Cátodo(s)</code></li>
+        <li><strong>|</strong> = interfaz sólido/solución</li>
+        <li><strong>║</strong> = puente salino (separa las dos semiceldas)</li>
+        <li>Izquierda = oxidación siempre. Derecha = reducción siempre.</li>
+        <li>Si no hay sólido metálico → electrodo de <strong>Pt</strong> inerte.</li>
+      </ul>
+    </div>
+
+    <div class="notation-pill">
+      Celda Zn/Cu: &nbsp;<span class="an">Zn(s) | Zn²⁺(aq)</span> <span class="br"> ║ </span> <span class="cat">Cu²⁺(aq) | Cu(s)</span>
+    </div>
+    <div class="notation-pill" style="margin-top:8px">
+      Con Pt: &nbsp;<span class="an">Pt(s) | Fe²⁺(aq), Fe³⁺(aq)</span> <span class="br"> ║ </span> <span class="cat">Ag⁺(aq) | Ag(s)</span>
+    </div>
+
+    <!-- ── REPRESENTACIÓN 3: ECUACIÓN BALANCEADA ── -->
+    <h3 style="margin: 24px 0 12px; color: var(--azul)">③ ECUACIÓN GLOBAL BALANCEADA</h3>
+
+    <div class="example-block">
+      <h4>✏️ Ejemplo Completo: Celda Zn / Cu — Las 3 representaciones</h4>
+      <div class="step"><div class="step-circle">1</div><div class="step-content">
+        <strong>Tabla 15.3:</strong> E°(Cu²⁺/Cu) = +0.34 V &gt; E°(Zn²⁺/Zn) = −0.76 V<br>
+        → Cu²⁺ = <span class="red">cátodo</span> (mayor E°). Zn = <span class="ox">ánodo</span> (menor E°).
+      </div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-content">
+        <strong>Semirreacciones:</strong><br>
+        <span class="ox">Ánodo (Ox): Zn(s) → Zn²⁺(aq) + 2e⁻</span><br>
+        <span class="red">Cátodo (Red): Cu²⁺(aq) + 2e⁻ → Cu(s)</span>
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        <strong>e⁻ ya iguales (2=2) → sumar y cancelar:</strong>
+      </div></div>
+      <div class="result-box"><strong>Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) &nbsp; E°celda = +1.10 V ✓</strong></div>
+      <div style="margin-top:12px">
+        <strong>Notación:</strong>
+        <div class="notation-pill">
+          <span class="an">Zn(s) | Zn²⁺(aq)</span><span class="br"> ║ </span><span class="cat">Cu²⁺(aq) | Cu(s)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <h4>✏️ Ejemplo 2: Celda Ag / Fe — Desde Tabla 15.3</h4>
+      <div class="step"><div class="step-circle">1</div><div class="step-content">
+        E°(Ag⁺/Ag) = +0.80 V &nbsp; | &nbsp; E°(Fe²⁺/Fe) = −0.44 V<br>
+        → Ag⁺ = <span class="red">cátodo</span>. Fe = <span class="ox">ánodo</span>.
+      </div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-content">
+        <span class="ox">Ánodo: Fe(s) → Fe²⁺(aq) + 2e⁻</span><br>
+        <span class="red">Cátodo: Ag⁺(aq) + e⁻ → Ag(s) &nbsp;→ ×2: &nbsp; 2Ag⁺ + 2e⁻ → 2Ag(s)</span>
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        E°celda = 0.80 − (−0.44) = <strong>+1.24 V</strong>
+      </div></div>
+      <div class="result-box"><strong>Fe(s) + 2Ag⁺(aq) → Fe²⁺(aq) + 2Ag(s) &nbsp; E°celda = +1.24 V ✓</strong></div>
+      <div style="margin-top:12px">
+        <div class="notation-pill">
+          <span class="an">Fe(s) | Fe²⁺(aq)</span><span class="br"> ║ </span><span class="cat">Ag⁺(aq) | Ag(s)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <h4>⛔ Qué incluir SIEMPRE en la respuesta de una celda voltaica</h4>
+      <ul>
+        <li>① Indicar E°ánodo y E°cátodo (de Tabla 15.3) con sus valores.</li>
+        <li>② Escribir la notación abreviada con el símbolo ║ correcto.</li>
+        <li>③ Dibujar el diagrama con ánodo a la izquierda, cátodo a la derecha, flecha de e⁻, puente salino.</li>
+        <li>④ Escribir la ecuación global balanceada con E°celda.</li>
+        <li>Si el problema dice "no espontánea" → E°celda &lt; 0 → necesitaría energía externa (electrólisis).</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 3B — EJEMPLOS CON NOMBRES EN INGLÉS
+══════════════════════════════════════════════════════════ -->
+<section id="sec-ejemplos">
+  <div class="sec-header">
+    <div class="num">3B</div>
+    <h2>EJEMPLOS INTEGRADORES — Inglés → Celda Completa <span class="badge-ess">ESENCIAL</span></h2>
+  </div>
+  <div class="card">
+
+    <div class="example-block">
+      <h4>✏️ Problema tipo examen: "A voltaic cell is constructed using zinc sulfate and silver nitrate solutions. Write the complete cell."</h4>
+      <div class="step"><div class="step-circle">1</div><div class="step-content">
+        <strong>Nomenclatura:</strong> zinc sulfate = <em class="em">ZnSO₄</em> (Zn²⁺) &nbsp;|&nbsp; silver nitrate = <em class="em">AgNO₃</em> (Ag⁺)
+      </div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-content">
+        <strong>Tabla 15.3:</strong> E°(Ag⁺/Ag) = +0.80 V &nbsp; &gt; &nbsp; E°(Zn²⁺/Zn) = −0.76 V<br>
+        → Ag⁺ = <span class="red">cátodo</span>. Zn = <span class="ox">ánodo</span>.
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        <span class="ox">Ánodo: Zn(s) → Zn²⁺(aq) + 2e⁻</span><br>
+        <span class="red">Cátodo: Ag⁺ + e⁻ → Ag(s) → ×2: 2Ag⁺ + 2e⁻ → 2Ag(s)</span>
+      </div></div>
+      <div class="step"><div class="step-circle">4</div><div class="step-content">
+        E°celda = 0.80 − (−0.76) = <strong>+1.56 V</strong>
+      </div></div>
+      <div class="result-box"><strong>Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s) &nbsp; E° = +1.56 V</strong></div>
+      <div style="margin-top:10px">
+        <div class="notation-pill"><span class="an">Zn(s) | Zn²⁺(aq)</span><span class="br"> ║ </span><span class="cat">Ag⁺(aq) | Ag(s)</span></div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <h4>✏️ Problema: "iron(II) sulfate solution and potassium permanganate in acidic solution form a voltaic cell."</h4>
+      <div class="step"><div class="step-circle">1</div><div class="step-content">
+        <strong>Nomenclatura:</strong> iron(II) sulfate = <em class="em">FeSO₄</em> (Fe²⁺, +2) &nbsp;|&nbsp; potassium permanganate = <em class="em">KMnO₄</em> (Mn = +7)
+      </div></div>
+      <div class="step"><div class="step-circle">2</div><div class="step-content">
+        <strong>Tabla 15.3:</strong> E°(MnO₄⁻/Mn²⁺) = +1.51 V &nbsp;&gt;&nbsp; E°(Fe³⁺/Fe²⁺) = +0.77 V<br>
+        → MnO₄⁻ = <span class="red">cátodo</span>. Fe²⁺ = <span class="ox">ánodo</span>.
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        <span class="ox">Ánodo: Fe²⁺ → Fe³⁺ + e⁻ → ×5: 5Fe²⁺ → 5Fe³⁺ + 5e⁻</span><br>
+        <span class="red">Cátodo: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O</span>
+      </div></div>
+      <div class="step"><div class="step-circle">4</div><div class="step-content">
+        E°celda = 1.51 − 0.77 = <strong>+0.74 V</strong>
+      </div></div>
+      <div class="result-box"><strong>MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O &nbsp; E° = +0.74 V ✓</strong></div>
+      <div style="margin-top:10px">
+        <div class="notation-pill"><span class="an">Pt | Fe²⁺(aq), Fe³⁺(aq)</span><span class="br"> ║ </span><span class="cat">MnO₄⁻(aq), Mn²⁺(aq) | Pt</span></div>
+      </div>
+      <p style="margin-top:8px; color:var(--gris); font-size:13px">💡 No hay sólido metálico en ninguna semicelda → se usa Pt como electrodo inerte en ambos lados.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 4 — BATERÍAS
+══════════════════════════════════════════════════════════ -->
+<section id="sec-baterias">
+  <div class="sec-header">
+    <div class="num">4</div>
+    <h2>BATERÍAS — Tipos y Semirreacciones <span class="badge-ess">ESENCIAL</span></h2>
+  </div>
+  <div class="card">
+
+    <div class="formula-block">
+      <h4>Lo que debes saber de cada batería</h4>
+      <p>Para cada tipo: (1) ¿Qué ocurre en el <span class="ox">ánodo</span> (oxidación)? (2) ¿Qué ocurre en el <span class="red">cátodo</span> (reducción)? (3) ¿Cuál es el electrolito? (4) ¿Es recargable?</p>
+    </div>
+
+    <table class="bat-table">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th class="ox" style="color:#FC8181">Ánodo (Oxidación) [−]</th>
+          <th class="red" style="color:#6EE7B7">Cátodo (Reducción) [+]</th>
+          <th>Electrolito</th>
+          <th>Recargable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Lead Storage<br>(Batería de plomo, 12V)</td>
+          <td>Pb(s) + SO₄²⁻ → PbSO₄(s) + 2e⁻</td>
+          <td>PbO₂(s) + 4H⁺ + SO₄²⁻ + 2e⁻ → PbSO₄(s) + 2H₂O</td>
+          <td>H₂SO₄ (ac.)</td>
+          <td>✅ SÍ (alternador)</td>
+        </tr>
+        <tr>
+          <td class="label">Dry Cell Ácida<br>(Pila seca Leclanché)</td>
+          <td>Zn(s) → Zn²⁺ + 2e⁻ (carcasa)</td>
+          <td>2MnO₂ + 2NH₄⁺ + 2e⁻ → Mn₂O₃ + 2NH₃ + H₂O</td>
+          <td>NH₄Cl / MnO₂</td>
+          <td>❌ NO</td>
+        </tr>
+        <tr>
+          <td class="label">Alkaline Dry Cell<br>(Pila alcalina)</td>
+          <td>Zn(s) + 2OH⁻ → ZnO(s) + H₂O + 2e⁻</td>
+          <td>2MnO₂ + H₂O + 2e⁻ → Mn₂O₃ + 2OH⁻</td>
+          <td>KOH/NaOH</td>
+          <td>❌ NO (más duradera que ácida)</td>
+        </tr>
+        <tr>
+          <td class="label">NiCad<br>(Níquel-Cadmio)</td>
+          <td>Cd(s) + 2OH⁻ → Cd(OH)₂ + 2e⁻</td>
+          <td>NiO(OH)(s) + H₂O + e⁻ → Ni(OH)₂ + OH⁻</td>
+          <td>KOH (básico)</td>
+          <td>✅ SÍ (muchas veces)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="example-block" style="margin-top:18px">
+      <h4>✏️ Cómo responder: "Identify the cathode and anode reactions of the lead storage battery."</h4>
+      <div class="step"><div class="step-circle">A</div><div class="step-content">
+        <span class="ox">Ánodo (oxidación, pierde e⁻):</span><br>
+        <strong>Pb(s) + SO₄²⁻(aq) → PbSO₄(s) + 2e⁻</strong>
+      </div></div>
+      <div class="step"><div class="step-circle">C</div><div class="step-content">
+        <span class="red">Cátodo (reducción, gana e⁻):</span><br>
+        <strong>PbO₂(s) + 4H⁺(aq) + SO₄²⁻(aq) + 2e⁻ → PbSO₄(s) + 2H₂O(l)</strong>
+      </div></div>
+      <div class="step"><div class="step-circle">N</div><div class="step-content">
+        <strong>Nota clave:</strong> ambos electrodos producen PbSO₄. Al recargar, la reacción se invierte.
+      </div></div>
+    </div>
+
+    <div class="lila-box">
+      <h4>◇ Dato conceptual: ¿Por qué las baterías no son "energía limpia"?</h4>
+      <p>Las baterías recargables (NiCad, plomo) <em>almacenan</em> energía, no la generan limpiamente. Dependen de cómo se produce la electricidad para recargarlas. La energía limpia (solar, eólica, hidrógeno verde) NO libera CO₂ ni contaminantes durante la generación — y esa es su definición técnica precisa.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 5 — BALANCEO REDOX (SECCIÓN SECUNDARIA)
+══════════════════════════════════════════════════════════ -->
+<section id="sec-redox">
+  <div class="sec-header">
+    <div class="num">5</div>
+    <h2>BALANCEO REDOX — Método Semirreacciones <span class="badge-add">ADICIONAL</span></h2>
+  </div>
+  <div class="card">
+
+    <div class="lila-box">
+      <h4>◇ Prioridad de estudio</h4>
+      <p>Solo habrá un problema de balanceo en el examen y será difícil. El enfoque principal son las secciones 1–4. Domina el algoritmo, pero no sacrifiques tiempo de las celdas voltaicas por esto.</p>
+    </div>
+
+    <div class="rule-block">
+      <h4>⚛️ Algoritmo Universal — 5 Pasos</h4>
+      <ul>
+        <li><strong>Paso 0:</strong> Nomenclatura — asigna #s de oxidación a todos los átomos. Identifica quién sube (#Ox↑ = oxidación) y quién baja (#Ox↓ = reducción).</li>
+        <li><strong>Paso 1:</strong> Separar en 2 semirreacciones (oxidación | reducción).</li>
+        <li><strong>Paso 2:</strong> Balancear átomos. Primero ≠ H,O. Luego O → agregar H₂O al lado corto. Luego H → agregar H⁺ al lado opuesto.</li>
+        <li><strong>Paso 3:</strong> Balancear carga → agregar e⁻ al lado de carga más positiva.</li>
+        <li><strong>Paso 4:</strong> MMC de e⁻ → multiplicar cada semirreacción para igualar e⁻ perdidos = e⁻ ganados.</li>
+        <li><strong>Paso 5:</strong> Sumar, cancelar e⁻ y especies idénticas. Verificar átomos y cargas.</li>
+        <li><em>Medio básico:</em> después del paso 5, agregar mismo nº de OH⁻ a ambos lados para neutralizar H⁺ → formar H₂O → cancelar H₂O repetidas.</li>
+      </ul>
+    </div>
+
+    <div class="example-block">
+      <h4>✏️ Ejemplo Medio Ácido — I⁻ + Cr₂O₇²⁻ → I₂ + Cr³⁺</h4>
+      <div class="step"><div class="step-circle">0</div><div class="step-content">
+        I⁻: I = −1 → I₂: I = 0 → <span class="ox">OXIDACIÓN (+1)</span><br>
+        Cr₂O₇²⁻: Cr = +6 → Cr³⁺: Cr = +3 → <span class="red">REDUCCIÓN (−3)</span>
+      </div></div>
+      <div class="step"><div class="step-circle">1-2</div><div class="step-content">
+        Ox: <strong>2I⁻ → I₂</strong> &nbsp;(balance 2 I)<br>
+        Red: <strong>Cr₂O₇²⁻ → 2Cr³⁺</strong> + 7H₂O &nbsp;|&nbsp; 14H⁺ al lado reactivo
+      </div></div>
+      <div class="step"><div class="step-circle">3</div><div class="step-content">
+        Ox: 2I⁻ → I₂ + 2e⁻ &nbsp;(carga −2 = −2 ✓)<br>
+        Red: 6e⁻ + 14H⁺ + Cr₂O₇²⁻ → 2Cr³⁺ + 7H₂O &nbsp;(carga +6 = +6 ✓)
+      </div></div>
+      <div class="step"><div class="step-circle">4</div><div class="step-content">
+        MMC(2,6)=6 → Ox×3: &nbsp; 6I⁻ → 3I₂ + 6e⁻
+      </div></div>
+      <div class="result-box"><strong>14H⁺ + Cr₂O₇²⁻ + 6I⁻ → 2Cr³⁺ + 3I₂ + 7H₂O ✓</strong></div>
+    </div>
+
+    <div class="example-block">
+      <h4>✏️ Ejemplo Medio Básico — Fe²⁺ + MnO₄⁻ → Fe³⁺ + MnO₂</h4>
+      <div class="step"><div class="step-circle">1-4</div><div class="step-content">
+        Como ácido primero: &nbsp; 4H⁺ + 3Fe²⁺ + MnO₄⁻ → 3Fe³⁺ + MnO₂ + 2H₂O
+      </div></div>
+      <div class="step"><div class="step-circle">B</div><div class="step-content">
+        Hay 4H⁺ → agregar 4OH⁻ a cada lado.<br>
+        Izquierda: 4H⁺ + 4OH⁻ = 4H₂O<br>
+        Nueva ec.: 4H₂O + 3Fe²⁺ + MnO₄⁻ → 3Fe³⁺ + MnO₂ + 2H₂O + 4OH⁻<br>
+        Cancelar 2H₂O de ambos lados:
+      </div></div>
+      <div class="result-box"><strong>2H₂O + 3Fe²⁺ + MnO₄⁻ → 3Fe³⁺ + MnO₂ + 4OH⁻ ✓</strong></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     TABLA COMPARATIVA
+══════════════════════════════════════════════════════════ -->
+<section id="comparativa">
+  <div class="sec-header"><div class="num">📊</div><h2>TABLA COMPARATIVA — Celda Voltaica vs Electrolítica</h2></div>
+  <div class="card">
+    <table class="comp">
+      <thead><tr><th>Característica</th><th>Celda Voltaica</th><th>Celda Electrolítica</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Reacción</strong></td><td class="red">ESPONTÁNEA (E° &gt; 0)</td><td class="ox">NO espontánea (E° &lt; 0)</td></tr>
+        <tr><td><strong>Energía</strong></td><td>PRODUCE electricidad</td><td>CONSUME electricidad</td></tr>
+        <tr><td><strong>e⁻ fluyen</strong></td><td>Solos (ánodo → cátodo)</td><td>Batería los empuja</td></tr>
+        <tr><td><strong>Ánodo</strong></td><td class="ox">Oxidación (−)</td><td class="ox">Oxidación (conectado al + de batería)</td></tr>
+        <tr><td><strong>Cátodo</strong></td><td class="red">Reducción (+)</td><td class="red">Reducción (conectado al − de batería)</td></tr>
+        <tr><td><strong>Ejemplo</strong></td><td>Batería Zn/Cu</td><td>Electrochapado, NaCl fundido</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CHEATSHEET FINAL
+══════════════════════════════════════════════════════════ -->
+<div class="cheatsheet" id="cheatsheet">
+  <h2>📋 CHEATSHEET FINAL — Todo lo que necesitas antes del examen</h2>
+  <div class="cs-grid">
+
+    <div class="cs-card">
+      <h4>🔑 NOMENCLATURA RÁPIDA (inglés → fórmula)</h4>
+      <ul>
+        <li>-<strong>ide</strong> → ion simple: chloride=Cl⁻, oxide=O²⁻</li>
+        <li>-<strong>ate</strong> → más O: sulfate=SO₄²⁻, nitrate=NO₃⁻</li>
+        <li>-<strong>ite</strong> → menos O: sulfite=SO₃²⁻</li>
+        <li>Roman num → estado ox: iron(III)=Fe³⁺</li>
+        <li class="cs-warn">H₂O₂ → O = −1, NO −2 ⚠️</li>
+        <li class="cs-ok">permanganate=MnO₄⁻ (Mn=+7)</li>
+        <li class="cs-ok">dichromate=Cr₂O₇²⁻ (Cr=+6)</li>
+      </ul>
+    </div>
+
+    <div class="cs-card">
+      <h4>⚡ TABLA 15.3 — REGLAS CRÍTICAS</h4>
+      <ul>
+        <li><span class="cs-ok">Mayor E°</span> → CÁTODO (se reduce)</li>
+        <li><span class="cs-warn">Menor E°</span> → ÁNODO (se oxida)</li>
+        <li><span class="cs-hl">E°celda = E°cátodo − E°ánodo</span></li>
+        <li>E°celda &gt; 0 → espontánea ✓</li>
+        <li class="cs-warn">NUNCA multipliques el E° por coeficiente</li>
+        <li>MnO₄⁻ = +1.51 V | Cu²⁺ = +0.34 V</li>
+        <li>Zn²⁺ = −0.76 V | Fe²⁺ = −0.44 V</li>
+      </ul>
+    </div>
+
+    <div class="cs-card">
+      <h4>🔋 CELDA VOLTAICA — Checklist</h4>
+      <ul>
+        <li><span class="cs-hl">①</span> Identificar ánodo/cátodo con E°</li>
+        <li><span class="cs-hl">②</span> Notación: <code>A(s)|A²⁺(aq)║B²⁺(aq)|B(s)</code></li>
+        <li><span class="cs-hl">③</span> Diagrama: ánodo izq, cátodo der, flecha e⁻, puente salino</li>
+        <li><span class="cs-hl">④</span> Ecuación global + E°celda</li>
+        <li class="cs-warn">Sin sólido metálico → usar Pt</li>
+        <li>AN-OX / RED-CAT siempre</li>
+      </ul>
+    </div>
+
+    <div class="cs-card">
+      <h4>🔌 BATERÍAS — Ánodo y Cátodo</h4>
+      <ul>
+        <li><strong>Lead:</strong> Ánodo=Pb→PbSO₄ | Cátodo=PbO₂→PbSO₄</li>
+        <li><strong>Dry ácida:</strong> Ánodo=Zn | Cátodo=MnO₂ (con NH₄Cl)</li>
+        <li><strong>Alcalina:</strong> Ánodo=Zn+OH⁻ | Cátodo=MnO₂ (con KOH)</li>
+        <li><strong>NiCad:</strong> Ánodo=Cd+OH⁻ | Cátodo=NiO(OH)</li>
+        <li class="cs-ok">Lead y NiCad = recargables</li>
+        <li class="cs-warn">Energía limpia ≠ produce CO₂</li>
+      </ul>
+    </div>
+
+    <div class="cs-card">
+      <h4>⚖️ BALANCEO — 5 Pasos Express</h4>
+      <ul>
+        <li><span class="cs-hl">0.</span> Nomenclatura + #Ox</li>
+        <li><span class="cs-hl">1.</span> Separar en 2 semirreacciones</li>
+        <li><span class="cs-hl">2.</span> Átomos → O(H₂O) → H(H⁺)</li>
+        <li><span class="cs-hl">3.</span> Carga → agregar e⁻</li>
+        <li><span class="cs-hl">4.</span> Igualar e⁻ (MMC)</li>
+        <li><span class="cs-hl">5.</span> Sumar + cancelar</li>
+        <li class="cs-warn">Básica: H⁺ + OH⁻ → H₂O al final</li>
+      </ul>
+    </div>
+
+    <div class="cs-card">
+      <h4>🚫 ERRORES A EVITAR</h4>
+      <ul>
+        <li class="cs-warn">E°celda = cátodo MENOS ánodo (no suma)</li>
+        <li class="cs-warn">E° NO se multiplica por coeficientes</li>
+        <li class="cs-warn">H₂O₂ → O = −1, no −2</li>
+        <li class="cs-warn">Notación: ánodo siempre a la IZQUIERDA de ║</li>
+        <li class="cs-warn">Diagrama: e⁻ van de ánodo → cátodo</li>
+        <li class="cs-warn">Energía limpia NO produce CO₂</li>
+      </ul>
+    </div>
+
+  </div>
+  <div style="text-align:center; margin-top:22px; color:#94A3B8; font-size:13px">
+    ⚗️ Química 12vo · Capítulo 15 · Secciones 15.2–15.4 · Junio 2026
+  </div>
+</div>
+
+</main>
+</body>
+</html>
